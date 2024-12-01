@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div style="text-align: center;background-color: purple; color: white;">
+        <a href="{% url 'home' %}"><h1>ToDo </h1></a>
+        <h1>todo task</h1>
+        <table style="width: 100%">
+            <tr>
+                <th> Id</th>
+                <th>Title</th>
+                <th>Describtion</th>
+                <th>created date</th>
+                <th>updated date</th>
+                <th>Completed</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data  %}
+            <tr>
+                <td>{{i.Tid}}</td>
+                <td>{{i.title}}</td>
+                <td>{{i.description}}</td>
+                <td>{{i.created_at}}</td>
+                <td>{{i.update_at}}</td>
+                <td>{{i.completedstatus}}</td>
+                <td><a href="{% url 'update_task' uid=i.Tid %}"><button>update</button></a>
+                <a href="{% url 'delete_todo' did=i.Tid %}"><button>delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+
+</body>
+</html>

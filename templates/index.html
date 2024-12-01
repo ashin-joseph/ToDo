@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin-left: 450px;">
+    
+    <div style="text-align: center; width: 400px; max-height: auto; background-color: purple; color: white; margin: 10px; padding: 20px; ">
+    <a href="{% url 'home' %}"><h1>ToDo </h1></a>
+                         
+    <h1> add list </h1>
+  
+    <form action="{% url 'save' %}" method="post">
+        {% csrf_token %}
+
+        <label for="">Title</label>
+        <input type="text" placeholder="task title" name="title"><br><br>
+
+        <label for="">Description</label>
+        <textarea type="text" placeholder="task description" rows="6" cols="20" name="description"></textarea><br><br>
+        
+        <label for="">completed status</label>
+        <select name="c_status" id="">
+            <option>select</option>
+            <option>Assigned</option>
+            <option>On process</option>
+            <option>Completed</option>
+        </select><br><br>
+        <a href="{% url 'display_task' %}"> <button> submit </button></a>
+    </form><br>
+</div>
+</body>
+</html>

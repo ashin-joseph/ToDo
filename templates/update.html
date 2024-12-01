@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin-left: 450px;">
+    
+    <div style="text-align: center; width: 400px; max-height: auto; background-color: purple; color: white; margin: 10px; padding: 20px; ">
+        <a href="{% url 'home' %}"><h1>ToDo </h1></a><br><br>
+        <h1>ToDo update </h1>                         
+    <h1> your list is saved</h1>
+    <form action="{% url 'update_save_task' uid=data.Tid %}" method="post" >
+        {% csrf_token %}
+        <label for="">TId</label>
+        <input value="{{data.Tid}}" type="text" placeholder="task id" name="tid" readonly><br><br>
+
+        <label for="">Title</label>
+        <input value="{{data.title}}" type="text" placeholder="task title" name="title" readonly><br><br>
+
+        <label for="">Description</label>
+        <textarea type="text" placeholder="task description" rows="6" cols="20" name="description">{{data.description}}</textarea><br><br>
+
+        <label for="">completed status</label>
+        <select name="c_status" id="">
+            <option>{{data.completedstatus}}</option>
+            <option>select</option>
+            <option>Assigned</option>
+            <option>On process</option>
+            <option>Completed</option>
+        </select><br><br>
+
+        <button type="submit"> update</button>
+    </form><br>
+   <a href="{% url 'display_task' %}"> <button> display task </button></a>
+</div>
+</body>
+</html>
